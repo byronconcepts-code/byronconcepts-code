@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>QR Generator</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <style>
+    body {margin:0;}
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+      background-color: #111;
+    }
+
+    .active {
+      background-color: #00bfff;
+    }
+    
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+
+    input[type=button] {
+        width: 80%;
+        background-color: #427bf6;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-left: 50%;
+        transform: translate(-50%);
+    }
+
+    input[type=button]:hover {
+        background-color: #335bb1;
+    }
+  </style>
+
+</head>
+
+<body>
+    <ul>
+    <li><a  href="index.html">Home</a></li>
+    <li><a class="active" href="qrcode.html">QR Code Generator</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+    </ul>
+    <input type="text" id="URL" class="URL" placeholder="Input your text here">
+    <form >
+        <input type="button" class="button" onclick="window.location.href = 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl='+document.getElementById('URL').value;" value="Generate QR Code"></input>
+    </form>
+  <script>
+  
+  </script>
+</body>
+</html>
