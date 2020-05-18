@@ -1,7 +1,51 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <h1>hello world</h1>
-        <p>I'm hosted with github pages</p>
-    </body>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>QR Generator</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <style>
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+
+    input[type=button] {
+        width: 80%;
+        background-color: #427bf6;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-left: 50%;
+        transform: translate(-50%);
+    }
+
+    input[type=button]:hover {
+        background-color: #335bb1;
+    }
+  </style>
+
+</head>
+
+<body>
+    <input type="text" id="URL" class="URL" placeholder="Input your text here">
+    <form >
+        <input type="button" class="button" onclick="window.location.href = 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl='+document.getElementById('URL').value;" value="Generate QR Code"></input>
+    </form>
+  <script>
+  
+  </script>
+</body>
 </html>
