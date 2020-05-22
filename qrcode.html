@@ -47,8 +47,7 @@
         border: 1px solid #cccccc;
         border-radius: 10px;
         box-sizing: border-box;
-        margin-left: 50%;
-        transform: translate(-50%);
+        display:inline-block;
     }
 
     input[type=button] {
@@ -60,12 +59,16 @@
         border: none;
         border-radius: 10px;
         cursor: pointer;
-        margin-left: 50%;
-        transform: translate(-50%);
+        display:inline-block;
     }
 
     input[type=button]:hover {
         background-color: #335bb1;
+    }
+
+    .container {
+      margin:auto;
+      text-align: center;
     }
   </style>
 
@@ -78,10 +81,13 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#about">About</a></li>
     </ul>
-    <input type="text" id="URL" class="URL" placeholder="Input your text here">
-    <form >
-        <input type="button" class="button" onclick="window.location.href = 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl='+document.getElementById('URL').value;" value="Generate QR Code"></input>
-    </form>
+    <div class="container">
+      <input type="text" id="URL" class="URL" placeholder="Input your text here">
+      <form >
+          <input type="button" class="button" onclick="window.location.href = 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl='+document.getElementById('URL').value;" value="Generate QR Code"></input>
+      </form>
+    </div>
+    
   <script>
   
   </script>
