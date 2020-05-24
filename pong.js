@@ -26,7 +26,7 @@ window.addEventListener('resize', function(){
 // waits till page has finished loading before running script
 window.onload = function() {   
     // main loop
-    var framesPerSecond = 60
+    var framesPerSecond = 60;
     setInterval(function() {
         background();
         movement();
@@ -57,6 +57,9 @@ var ballSpeedX = 5*change;
 var ballSpeedY = 3*change;
 
 var centerLineWidth = 5*change;
+
+var p1Score = 0
+var p2Score = 0
 
 function variables(){
     change = canvas.width/900;
@@ -112,6 +115,13 @@ function drawCenterLine() {
     this.ctx.stroke();
 };
 
+// draw text
+function drawText(drawX, drawY, text, fillColour) {
+    this.ctx.fillStyle = fillColour;
+    this.ctx.font = String(50*change + 'px Arial');;
+    this.ctx.fillText(text, drawX, drawY)
+}
+
 function drawObjects() {
     // draw paddle 1
     this.drawRect(paddle1X, paddle1Y, paddleWidth, paddleHeight, 'white');
@@ -119,11 +129,17 @@ function drawObjects() {
     // draw paddle 2
     this.drawRect(paddle2X, paddle2Y, paddleWidth, paddleHeight, 'white');
 
+    // draw centre line
+    drawCenterLine();
+
     // draw ball
     this.drawCircle(ballX, ballY, ballDiameter/2, 'white');
 
-    // draw centre line
-    drawCenterLine();
+    // draw left score
+    this.drawText(canvas.width/4, 75*change, String(p1Score), 'white');
+
+    // draw right score
+    this.drawText(canvas.width/4*3, 75*change, String(p2Score), 'white');
 };
 
 // movement
@@ -133,9 +149,11 @@ function movement() {
 
     if(ballX-ballRadius < 0) {
         ballSpeedX = -ballSpeedX;
+        p2Score++;
     };
     if(ballX+ballRadius > canvas.width) {
         ballSpeedX = -ballSpeedX;
+        p1Score++;
     };
     if(ballY-ballRadius < 0) {
         ballSpeedY = -ballSpeedY;
