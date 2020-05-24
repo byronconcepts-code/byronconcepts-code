@@ -143,7 +143,7 @@ window.onload = function() {
         movement();
         background();
         drawObjects();
-        console.log(ballSpeedX, ballSpeedY);
+        //console.log(ballSpeedX, ballSpeedY);
         //console.log(canvas.width, canvas.height);
     }, 1000/framesPerSecond);
 };
