@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                background-color: rgb(64, 138, 223);
+            }
+
+            #mainBody {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+            }
+
+            #myCanvas {
+                display: inline-block;
+                /*width: calc((((100vh/10)*9)/3)*4);
+                height: calc((100vh/10)*9);*/
+            }
+        </style>
+    </head>
+    <body>
+        <div id='mainBody'>
+            <canvas id='myCanvas' width='900' height='675'></canvas>
+        </div>
+        
+        <script src='pong.js'></script>
+    </body>
+</html>
