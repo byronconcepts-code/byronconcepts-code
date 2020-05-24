@@ -43,8 +43,8 @@ var ballDiameter = 20*change;
 var ballRadius = ballDiameter/2*change;
 var ballX = canvas.width/2-ballWidth/2*change;
 var ballY = canvas.height/2-ballHeight/2*change;
-var ballSpeedX = 5*change;
-var ballSpeedY = 3*change;
+var ballSpeedX = 10*change;
+var ballSpeedY = 6*change;
 
 var centerLineWidth = 5*change;
 
@@ -65,8 +65,8 @@ function variables(){
     ballRadius = ballDiameter/2*change;
     ballX = canvas.width/2-ballWidth/2*change;
     ballY = canvas.height/2-ballHeight/2*change;
-    ballSpeedX = 5*change;
-    ballSpeedY = 3*change;
+    ballSpeedX = 10*change;
+    ballSpeedY = 6*change;
 
     centerLineWidth = 5*change;
 }
@@ -95,8 +95,8 @@ function drawCircle(drawX, drawY, radius, circleColour) {
 function drawCenterLine() {
     this.ctx.beginPath();
     this.ctx.setLineDash([30*change]);
-    this.ctx.moveTo(canvas.width/2-centerLineWidth, 20*change);
-    this.ctx.lineTo(canvas.width/2, canvas.height);
+    this.ctx.moveTo(canvas.width/2-centerLineWidth/2, 20*change);
+    this.ctx.lineTo(canvas.width/2-centerLineWidth/2, canvas.height);
     this.ctx.lineWidth = centerLineWidth;
     this.ctx.strokeStyle = 'white';
     this.ctx.stroke();
@@ -143,6 +143,6 @@ window.onload = function() {
         movement();
         background();
         drawObjects();
-        console.log(canvas.width, canvas.height);
+        //console.log(canvas.width, canvas.height);
     }, 1000/framesPerSecond);
 };
