@@ -118,8 +118,9 @@ function drawCenterLine() {
 // draw text
 function drawText(drawX, drawY, text, fillColour) {
     this.ctx.fillStyle = fillColour;
-    this.ctx.font = String(50*change + 'px Arial');;
-    this.ctx.fillText(text, drawX, drawY)
+    this.ctx.font = String(50*change + 'px Arial');
+    var textWidth = this.ctx.measureText(text).width;
+    this.ctx.fillText(text, drawX-textWidth/2, drawY)
 }
 
 function drawObjects() {
