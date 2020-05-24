@@ -34,10 +34,24 @@ window.onload = function() {
     }, 1000/framesPerSecond);
 };
 
+window.onkeydown = function() {
+    if(this.event.keyCode == 38) {
+        this.paddleSpeed = -10*change;
+        console.log('arrow up pressed');
+    }
+    if(this.event.keyCode == 40) {
+        this.paddleSpeed = 10*change;
+        console.log('arrow down pressed');
+    }
+};
+window.onkeyup = function() {
+    this.paddleSpeed = 0;
+}
 
 // creates the variables
 // paddle constants and variables
 var change = canvas.width/900;
+var paddleSpeed = 0;
 var paddleWidth = 12*change;
 var paddleHeight = 120*change;
 var paddle1X = 20*change;
@@ -58,11 +72,12 @@ var ballSpeedY = 3*change;
 
 var centerLineWidth = 5*change;
 
-var p1Score = 0
-var p2Score = 0
+var p1Score = 0;
+var p2Score = 0;
 
 function variables(){
     change = canvas.width/900;
+    paddleSpeed = 0;
     paddleWidth = 12*change;
     paddleHeight = 120*change;
     paddle1X = 20*change;
@@ -147,9 +162,12 @@ function drawObjects() {
 function movement() {
     ballX += ballSpeedX;
     ballY += ballSpeedY;
+    paddle1Y += paddleSpeed;
 
     if(ballX-ballRadius < 0) {
-        ballSpeedX = -ballSpeedX;
+        ballX = canvas.width/2-ballWidth/2*change;
+        ballSpeedX = 5*change;
+        ballSpeedY = 3*change;
         p2Score++;
     };
     if(ballX+ballRadius > canvas.width) {
@@ -162,5 +180,16 @@ function movement() {
     if(ballY+ballRadius > canvas.height) {
         ballSpeedY = -ballSpeedY;
     };
+
+    if(ballX <= paddle1X+paddleWidth && ballY > paddle1Y && ballY+ballHeight <= paddle1Y+paddleHeight) {
+        ballSpeedX = -ballSpeedX;
+    }
+
+    if(paddle1Y < 0) {
+        paddle1Y = 0;
+    }
+    if(paddle1Y+paddleHeight > canvas.height) {
+        paddle1Y = canvas.height-paddleHeight;
+    }
 };
 
