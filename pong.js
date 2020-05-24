@@ -20,9 +20,19 @@ window.addEventListener('resize', function(){
         canvas.width = (window.innerWidth/10)*7;
         canvas.height = (canvas.width/4)*3;
     }
-    change = canvas.width/900;
     variables();
 })
+
+// waits till page has finished loading before running script
+window.onload = function() {   
+    // main loop
+    var framesPerSecond = 60
+    setInterval(function() {
+        background();
+        movement();
+        drawObjects();
+    }, 1000/framesPerSecond);
+};
 
 
 // creates the variables
@@ -43,8 +53,8 @@ var ballDiameter = 20*change;
 var ballRadius = ballDiameter/2*change;
 var ballX = canvas.width/2-ballWidth/2*change;
 var ballY = canvas.height/2-ballHeight/2*change;
-var ballSpeedX = 10*change;
-var ballSpeedY = 6*change;
+var ballSpeedX = 5*change;
+var ballSpeedY = 3*change;
 
 var centerLineWidth = 5*change;
 
@@ -65,8 +75,8 @@ function variables(){
     ballRadius = ballDiameter/2*change;
     ballX = canvas.width/2-ballWidth/2*change;
     ballY = canvas.height/2-ballHeight/2*change;
-    ballSpeedX = 10*change;
-    ballSpeedY = 6*change;
+    ballSpeedX = 5*change;
+    ballSpeedY = 3*change;
 
     centerLineWidth = 5*change;
 }
@@ -135,14 +145,3 @@ function movement() {
     };
 };
 
-// waits till page has finished loading before running script
-window.onload = function() {   
-    // main loop
-    var framesPerSecond = 30
-    setInterval(function() {
-        movement();
-        background();
-        drawObjects();
-        console.log(ballSpeedX, ballSpeedY);
-    }, 1000/framesPerSecond);
-};
