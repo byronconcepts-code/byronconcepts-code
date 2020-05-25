@@ -104,14 +104,14 @@ var audio = new Audio('Media/beep.mp3');
 var playSound = true;
 
 var image = new Image();
-image.src = 'volume on.png';
+image.src = 'Images/volume on.png';
 var imageWidth = 20*change;
 var imageHeight = 20*change;
 var imageX = 20*change;
 var imageY = 20*change;
 
 var startImage = new Image();
-startImage.src = 'start screen.png';
+startImage.src = 'Images/start screen.png';
 var showStart = true;
 
 function variables(){
