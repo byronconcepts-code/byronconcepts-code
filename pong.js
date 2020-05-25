@@ -101,6 +101,7 @@ var p1Score = 0;
 var p2Score = 0;
 
 var audio = new Audio('beep.mp3');
+audio.play();
 var playSound = true;
 
 var image = new Image();
