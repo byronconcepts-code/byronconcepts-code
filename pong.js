@@ -111,7 +111,7 @@ var imageX = 20*change;
 var imageY = 20*change;
 
 var startImage = new Image();
-startImage.src = 'Images/start screen.png';
+startImage.src = 'start screen.png';
 var showStart = true;
 
 function variables(){
