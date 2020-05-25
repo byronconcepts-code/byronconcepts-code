@@ -53,11 +53,11 @@ window.onkeydown = function() {
     if(this.event.keyCode == 77) {
         if(this.playSound == false) {
             this.playSound = true;
-            this.image.src = 'Images/volume on.png'
+            this.image.src = 'volume on.png'
         }
         else if(this.playSound == true) {
             this.playSound = false;
-            this.image.src = 'Images/volume off.png';
+            this.image.src = 'volume off.png';
         }
     }
 
@@ -100,11 +100,11 @@ var centerLineWidth = 5*change;
 var p1Score = 0;
 var p2Score = 0;
 
-var audio = new Audio('Media/beep.mp3');
+var audio = new Audio('beep.mp3');
 var playSound = true;
 
 var image = new Image();
-image.src = 'Images/volume on.png';
+image.src = 'volume on.png';
 var imageWidth = 20*change;
 var imageHeight = 20*change;
 var imageX = 20*change;
