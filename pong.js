@@ -28,30 +28,55 @@ window.onload = function() {
     // main loop
     var framesPerSecond = 60;
     setInterval(function() {
-        background();
-        movement();
-        drawObjects();
+        if(showStart == true) {
+            this.ctx.drawImage(startImage, 0, 0, canvas.width, canvas.height);
+            window.addEventListener('keydown', function() {
+                this.showStart = false;
+            })
+        }
+        else {
+            background();
+            movement();
+            drawObjects();
+            win();}
+            
     }, 1000/framesPerSecond);
 };
 
 window.onkeydown = function() {
     if(this.event.keyCode == 38) {
-        this.paddleSpeed = -10*change;
-        console.log('arrow up pressed');
+        this.paddle1Speed = -10*change;
     }
     if(this.event.keyCode == 40) {
-        this.paddleSpeed = 10*change;
-        console.log('arrow down pressed');
+        this.paddle1Speed = 10*change;
+    }
+    if(this.event.keyCode == 77) {
+        if(this.playSound == false) {
+            this.playSound = true;
+            this.image.src = 'volume on.png'
+        }
+        else if(this.playSound == true) {
+            this.playSound = false;
+            this.image.src = 'volume off.png';
+        }
+    }
+
+    if(this.event.keyCode == 82) {
+        ballX = canvas.width/2-ballWidth/2*change;
+        ballY = canvas.height/2-ballHeight/2*change;
     }
 };
 window.onkeyup = function() {
-    this.paddleSpeed = 0;
+    if(this.event.keyCode == 38 || this.event.keyCode == 40){
+        this.paddle1Speed = 0;
+    }
 }
 
 // creates the variables
 // paddle constants and variables
 var change = canvas.width/900;
-var paddleSpeed = 0;
+var paddle1Speed = 0;
+var paddle2Speed = 0;
 var paddleWidth = 12*change;
 var paddleHeight = 120*change;
 var paddle1X = 20*change;
@@ -67,17 +92,31 @@ var ballDiameter = 20*change;
 var ballRadius = ballDiameter/2*change;
 var ballX = canvas.width/2-ballWidth/2*change;
 var ballY = canvas.height/2-ballHeight/2*change;
-var ballSpeedX = 5*change;
-var ballSpeedY = 3*change;
+var ballSpeedX = 7*change;
+var ballSpeedY = 5*change;
 
 var centerLineWidth = 5*change;
 
 var p1Score = 0;
 var p2Score = 0;
 
+var audio = new Audio('beep.mp3');
+var playSound = true;
+
+var image = new Image();
+image.src = 'volume on.png';
+var imageWidth = 20*change;
+var imageHeight = 20*change;
+var imageX = 20*change;
+var imageY = 20*change;
+
+var startImage = new Image();
+startImage.src = 'start screen.png';
+var showStart = true;
+
 function variables(){
     change = canvas.width/900;
-    paddleSpeed = 0;
+    paddle1Speed = 0;
     paddleWidth = 12*change;
     paddleHeight = 120*change;
     paddle1X = 20*change;
@@ -93,10 +132,15 @@ function variables(){
     ballRadius = ballDiameter/2*change;
     ballX = canvas.width/2-ballWidth/2*change;
     ballY = canvas.height/2-ballHeight/2*change;
-    ballSpeedX = 5*change;
-    ballSpeedY = 3*change;
+    ballSpeedX = 7*change;
+    ballSpeedY = 5*change;
 
     centerLineWidth = 5*change;
+
+    imageWidth = 20*change;
+    imageHeight = 20*change;
+    imageX = 20*change;
+    imageY = 20*change;
 }
 
 // draw the background
@@ -156,40 +200,129 @@ function drawObjects() {
 
     // draw right score
     this.drawText(canvas.width/4*3, 75*change, String(p2Score), 'white');
+
+    // draw mute button
+    this.ctx.drawImage(image, imageX, imageY, imageWidth, imageHeight);
 };
+
+function sound() {
+    if(playSound == true) {
+        audio.play();
+    }
+}
 
 // movement
 function movement() {
     ballX += ballSpeedX;
     ballY += ballSpeedY;
-    paddle1Y += paddleSpeed;
+    paddle1Y += paddle1Speed;
+    paddle2Y += paddle2Speed;
 
+    // ball edge detection
     if(ballX-ballRadius < 0) {
         ballX = canvas.width/2-ballWidth/2*change;
-        ballSpeedX = 5*change;
-        ballSpeedY = 3*change;
+        ballSpeedX = -7*change;
+        ballSpeedY = 5*change;
+        sound();
         p2Score++;
+        
     };
     if(ballX+ballRadius > canvas.width) {
-        ballSpeedX = -ballSpeedX;
+        ballX = canvas.width/2-ballWidth/2*change;
+        ballSpeedX = ballSpeedX;
+        sound();
         p1Score++;
     };
     if(ballY-ballRadius < 0) {
+        sound();
         ballSpeedY = -ballSpeedY;
     };
     if(ballY+ballRadius > canvas.height) {
+        sound();
         ballSpeedY = -ballSpeedY;
     };
 
-    if(ballX <= paddle1X+paddleWidth && ballY > paddle1Y && ballY+ballHeight <= paddle1Y+paddleHeight) {
-        ballSpeedX = -ballSpeedX;
+    // ball paddle 1 detection
+    if(ballX <= paddle1X+paddleWidth) {
+        if(ballY <= paddle1Y+paddleHeight/2 && ballY+ballHeight >= paddle1Y) {
+            sound();
+            ballSpeedX = -ballSpeedX;
+            if(ballSpeedY == 5*change) {
+                ballSpeedY = -ballSpeedY;
+            }
+        }
+        if(ballY <= paddle1Y+paddleHeight && ballY > paddle1Y+paddleHeight/2) {
+            sound();
+            ballSpeedX = -ballSpeedX;
+            if(ballSpeedY == -5*change) {
+                ballSpeedY = -ballSpeedY;
+            }
+        }
     }
 
+    // ball paddle 2 detection
+    if(ballX > paddle2X) {
+        if(ballY <= paddle2Y+paddleHeight/2 && ballY+ballHeight > paddle2Y) {
+            sound();
+            ballSpeedX = -ballSpeedX;
+            if(ballSpeedY == 5*change) {
+                ballSpeedY = -ballSpeedY;
+            }
+        }
+        if(ballY <= paddle2Y+paddleHeight && ballY > paddle2Y+paddleHeight/2) {
+            sound();
+            ballSpeedX = -ballSpeedX;
+            if(ballSpeedY == -5*change) {
+                ballSpeedY = -ballSpeedY;
+            }
+        }
+    }
+
+    // paddle edge collision detection
     if(paddle1Y < 0) {
         paddle1Y = 0;
     }
     if(paddle1Y+paddleHeight > canvas.height) {
         paddle1Y = canvas.height-paddleHeight;
     }
+
+    if(paddle2Y < 0) {
+        paddle2Y = 0;
+    }
+    if(paddle2Y+paddleHeight > canvas.height) {
+        paddle2Y = canvas.height-paddleHeight;
+    }
+
+    // paddle 2 ai
+    if(ballY < paddle2Y+paddleHeight*0.3) {
+        paddle2Speed = -4.5*change;
+    }
+    if(ballY > paddle2Y+paddleHeight*0.7) {
+        // 4.72
+        paddle2Speed = 4.5*change;
+    }
 };
 
+function win() {
+    if(p1Score == 15) {
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillRect(0, 0, canvas.width, canvas.height);
+        drawText(canvas.width/2, canvas.height/2, 'CONGRATULATIONS, YOU WON!!!', 'white');
+        ballSpeedY = 0;
+        ballSpeedX = 0;
+    }
+    if(p2Score == 15) {
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillRect(0, 0, canvas.width, canvas.height);
+        drawText(canvas.width/2, canvas.height/2, 'YOU LOST!!!', 'white');
+        ballSpeedY = 0;
+        ballSpeedX = 0;
+    }
+}
+
+function startScreen() {
+    this.ctx.drawImage(startImage, 0, 0, canvas.width, canvas.height);
+    window.onkeydown = function() {
+    this.showStart = false;
+    }
+}
