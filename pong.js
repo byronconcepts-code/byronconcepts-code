@@ -100,8 +100,9 @@ var centerLineWidth = 5*change;
 var p1Score = 0;
 var p2Score = 0;
 
-var audio = new Audio('beep.mp3');
+var audio = new Audio();
 audio.play();
+audo.src = 'beep.mp3';
 var playSound = true;
 
 var image = new Image();
