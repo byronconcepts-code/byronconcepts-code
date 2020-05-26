@@ -19,6 +19,8 @@
 
             #myCanvas {
                 display: inline-block;
+                -webkit-box-shadow: 0 0 50px black;
+                box-shadow: 0 0 50px black;
             }
 
             #mute, #unmute {
@@ -29,11 +31,26 @@
                 text-align: center;
                 margin-bottom: 10px;
             }
+
+            #backgroundImg {
+                width: 100%;
+                position: absolute;
+                top:0px;
+                bottom:0px;
+                margin:0;
+                display:flex;
+                justify-content: center;
+                background-color: rgb(64, 138, 223);
+                background-image: linear-gradient(rgb(68, 146, 235), rgb(24, 52, 85));
+                background-size: 100% 100%;
+            }
         </style>
     </head>
     <body>
-        <div id='mainBody'>
-            <canvas id='myCanvas' width='900' height='675'></canvas>
+        <div id='backgroundImg'>
+            <div id='mainBody'>
+                <canvas id='myCanvas' width='900' height='675'></canvas>
+            </div>
         </div>
         
         <script src='pong.js'></script>
