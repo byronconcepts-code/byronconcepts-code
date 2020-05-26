@@ -258,9 +258,11 @@ function movement() {
             sound();
             ballSpeedX = -ballSpeedX;
             if(ballSpeedY == -5*change) {
+                console.log('ball paddle bottom');
                 ballSpeedY = 5*change;
             }
             if(ballSpeedY == 0) {
+                console.log('ball paddle top');
                 ballSpeedY = 5*change;   
             }
         }
