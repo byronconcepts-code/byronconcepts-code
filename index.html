@@ -9,47 +9,83 @@
   <meta name="author" content="SitePoint">
 
   <style>
-    body {margin:0;}
-
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #333;
+    body, html {
+      margin:0;
+      display:flex;
+      justify-content: center;
     }
 
-    li {
-      float: left;
-    }
-
-    li a {
-      display: block;
-      color: white;
+    .column {
       text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
+      width: 45%;
+      padding: 5px;
+      border: 3px black solid;
+      margin: 1%;
+      display:inline-block;
+      background-color: white;
     }
 
-    li a:hover:not(.active) {
-      background-color: #111;
+    .image {
+      display: inline-block;
+      max-width: 100%;
+      max-height: 100%;
     }
 
-    .active {
-      background-color: #00bfff;
+    figcaption {
+      text-align: center;
+      text-decoration: underline;
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
+      color: black;
     }
-    
+
+    #page {
+      text-align: center;
+      /*border: 3px solid black;*/
+      -webkit-box-shadow: 0 0 50px black;
+      box-shadow: 0 0 50px black;
+      background-color: #DEA540;
+      display:inline-block;
+      width: 70%;
+      height: 100%;
+    }
+
+    #backgroundImg {
+      width: 100%;
+      position: absolute;
+      top:0px;
+      bottom:0px;
+      margin:0;
+      display:flex;
+      justify-content: center;
+      background-color: rgb(64, 138, 223);
+      background-image: linear-gradient(rgb(68, 146, 235), rgb(24, 52, 85));
+      background-size: 100% 100%;
+    }
   </style>
 
 </head>
 
 <body>
-    <ul>
-    <li><a class="active" href="index.html">Home</a></li>
-    <li><a href="qrcode.html">QR Code Generator</a></li>
-    <li><a href="pong.html">Pong</a></li>
-    <li><a href="#about">About</a></li>
-    </ul>
+    <div id='backgroundImg'>
+      <div id='page'>
+        
+        <div class='column'>
+          <a href='qrcode.html'>
+            <img src='qrGenImage.png' class='image' alt='QR Code Generator'>
+            <figcaption>QR Code Generator</figcaption>
+          </a>
+        </div>
+
+        <div class='column'>
+          <a href='pong.html'>
+            <img src='PongImage.png' class='image' alt='Pong Game'>
+            <figcaption>Pong Game</figcaption> 
+          </a>
+        </div>
+      </div>
+    </div>
+    
   <script>
   
   </script>
