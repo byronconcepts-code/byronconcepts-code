@@ -230,6 +230,7 @@ function movement() {
     if(ballX+ballRadius > canvas.width) {
         ballX = canvas.width/2-ballWidth/2*change;
         ballSpeedX = ballSpeedX;
+        ballSpeedY = 5*change;
         sound();
         p1Score++;
     };
