@@ -251,19 +251,17 @@ function movement() {
                 ballSpeedY = -5*change;
             }
             if(ballSpeedY == 0) {
-                ballSpeedY = -5*change;   
+                ballSpeedY = -7*change;   
             }
         }
         if(ballY <= paddle1Y+paddleHeight && ballY > paddle1Y+(paddleHeight/3)*2) {
             sound();
             ballSpeedX = -ballSpeedX;
             if(ballSpeedY == -5*change) {
-                console.log('ball paddle bottom');
                 ballSpeedY = 5*change;
             }
             if(ballSpeedY == 0) {
-                console.log('ball paddle top');
-                ballSpeedY = 5*change;   
+                ballSpeedY = 7*change;   
             }
         }
         if(ballY <= paddle1Y+(paddleHeight/3)*2 && ballY > paddle1Y+paddleHeight/3) {
@@ -275,19 +273,30 @@ function movement() {
 
     // ball paddle 2 detection
     if(ballX > paddle2X) {
-        if(ballY <= paddle2Y+paddleHeight/2 && ballY+ballHeight > paddle2Y) {
+        if(ballY <= paddle2Y+paddleHeight/3 && ballY+ballHeight > paddle2Y) {
             sound();
             ballSpeedX = -ballSpeedX;
             if(ballSpeedY == 5*change) {
-                ballSpeedY = -ballSpeedY;
+                ballSpeedY = -5*change;
+            }
+            if(ballSpeedY == 0) {
+                ballSpeedY = -7*change;   
             }
         }
-        if(ballY <= paddle2Y+paddleHeight && ballY > paddle2Y+paddleHeight/2) {
+        if(ballY <= paddle2Y+paddleHeight && ballY > paddle2Y+(paddleHeight/3)*2) {
             sound();
             ballSpeedX = -ballSpeedX;
             if(ballSpeedY == -5*change) {
-                ballSpeedY = -ballSpeedY;
+                ballSpeedY = 5*change;
             }
+            if(ballSpeedY == 0) {
+                ballSpeedY = 7*change;   
+            }
+        }
+        if(ballY <= paddle2Y+(paddleHeight/3)*2 && ballY > paddle2Y+paddleHeight/3) {
+            sound();
+            ballSpeedX = -ballSpeedX;
+            ballSpeedY = 0;
         }
     }
 
