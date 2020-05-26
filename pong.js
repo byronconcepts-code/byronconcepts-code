@@ -250,12 +250,18 @@ function movement() {
             if(ballSpeedY == 5*change) {
                 ballSpeedY = -5*change;
             }
+            if(ballSpeedY == 0) {
+                ballSpeedY = -5*change;   
+            }
         }
         if(ballY <= paddle1Y+paddleHeight && ballY > paddle1Y+(paddleHeight/3)*2) {
             sound();
             ballSpeedX = -ballSpeedX;
             if(ballSpeedY == -5*change) {
                 ballSpeedY = 5*change;
+            }
+            if(ballSpeedY == 0) {
+                ballSpeedY = 5*change;   
             }
         }
         if(ballY <= paddle1Y+(paddleHeight/3)*2 && ballY > paddle1Y+paddleHeight/3) {
