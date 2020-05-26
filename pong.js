@@ -244,19 +244,24 @@ function movement() {
 
     // ball paddle 1 detection
     if(ballX <= paddle1X+paddleWidth) {
-        if(ballY <= paddle1Y+paddleHeight/2 && ballY+ballHeight >= paddle1Y) {
+        if(ballY <= paddle1Y+paddleHeight/3 && ballY+ballHeight >= paddle1Y) {
             sound();
             ballSpeedX = -ballSpeedX;
             if(ballSpeedY == 5*change) {
-                ballSpeedY = -ballSpeedY;
+                ballSpeedY = -5*change;
             }
         }
-        if(ballY <= paddle1Y+paddleHeight && ballY > paddle1Y+paddleHeight/2) {
+        if(ballY <= paddle1Y+paddleHeight && ballY > paddle1Y+(paddleHeight/3)*2) {
             sound();
             ballSpeedX = -ballSpeedX;
             if(ballSpeedY == -5*change) {
-                ballSpeedY = -ballSpeedY;
+                ballSpeedY = 5*change;
             }
+        }
+        if(ballY <= paddle1Y+(paddleHeight/3)*2 && ballY > paddle1Y+paddleHeight/3) {
+            sound();
+            ballSpeedX = -ballSpeedX;
+            ballSpeedY = 0;
         }
     }
 
