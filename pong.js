@@ -251,7 +251,7 @@ function movement() {
                 ballSpeedY = -5*change;
             }
             if(ballSpeedY == 0) {
-                ballSpeedY = -7*change;   
+                ballSpeedY = -10*change;   
             }
         }
         if(ballY <= paddle1Y+paddleHeight && ballY > paddle1Y+(paddleHeight/3)*2) {
@@ -261,7 +261,7 @@ function movement() {
                 ballSpeedY = 5*change;
             }
             if(ballSpeedY == 0) {
-                ballSpeedY = 7*change;   
+                ballSpeedY = 10*change;   
             }
         }
         if(ballY <= paddle1Y+(paddleHeight/3)*2 && ballY > paddle1Y+paddleHeight/3) {
@@ -280,7 +280,7 @@ function movement() {
                 ballSpeedY = -5*change;
             }
             if(ballSpeedY == 0) {
-                ballSpeedY = -7*change;   
+                ballSpeedY = -10*change;   
             }
         }
         if(ballY <= paddle2Y+paddleHeight && ballY > paddle2Y+(paddleHeight/3)*2) {
@@ -290,7 +290,7 @@ function movement() {
                 ballSpeedY = 5*change;
             }
             if(ballSpeedY == 0) {
-                ballSpeedY = 7*change;   
+                ballSpeedY = 10*change;   
             }
         }
         if(ballY <= paddle2Y+(paddleHeight/3)*2 && ballY > paddle2Y+paddleHeight/3) {
