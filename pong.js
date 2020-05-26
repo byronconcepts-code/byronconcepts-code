@@ -295,11 +295,11 @@ function movement() {
 
     // paddle 2 ai
     if(ballY < paddle2Y+paddleHeight*0.3) {
-        paddle2Speed = -4.5*change;
+        paddle2Speed = -4.6*change;
     }
     if(ballY > paddle2Y+paddleHeight*0.7) {
         // 4.72
-        paddle2Speed = 4.5*change;
+        paddle2Speed = 4.6*change;
     }
 };
 
