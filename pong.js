@@ -327,6 +327,7 @@ function movement() {
     }
     if(ballY > paddle2Y+paddleHeight*0.3 && ballY < paddle2Y+paddleHeight*0.7 && ballSpeedY == 0) {
         paddle2Speed = 0;
+    }
 };
 
 function win() {
