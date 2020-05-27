@@ -106,7 +106,7 @@ var playSound = true;
 
 var music = new Audio('Game Music.mp3');
 music.loop = true;
-music.volume = 0.3;
+music.volume = 0.5;
 
 var image = new Image();
 image.src = 'volume on.png';
