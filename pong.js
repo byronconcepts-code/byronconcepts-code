@@ -26,6 +26,7 @@ window.addEventListener('resize', function(){
 // waits till page has finished loading before running script
 window.onload = function() {   
     // main loop
+    music.play();
     var framesPerSecond = 60;
     setInterval(function() {
         if(showStart == true) {
@@ -102,6 +103,9 @@ var p2Score = 0;
 
 var audio = new Audio('beep.mp3');
 var playSound = true;
+
+var music = new Audio('Game Music.mp3');
+music.volume = 0.3;
 
 var image = new Image();
 image.src = 'volume on.png';
