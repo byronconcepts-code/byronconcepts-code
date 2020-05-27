@@ -30,6 +30,10 @@ window.onload = function() {
         console.log('Play music')
         music.play();
     }
+    if(playSound = false) {
+        console.log('Play music')
+        music.pause();
+    }
     var framesPerSecond = 60;
     setInterval(function() {
         if(showStart == true) {
