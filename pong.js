@@ -26,7 +26,9 @@ window.addEventListener('resize', function(){
 // waits till page has finished loading before running script
 window.onload = function() {   
     // main loop
-    music.play();
+    if(playSound = true) {
+        music.play();
+    }
     var framesPerSecond = 60;
     setInterval(function() {
         if(showStart == true) {
