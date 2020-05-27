@@ -105,6 +105,7 @@ var audio = new Audio('beep.mp3');
 var playSound = true;
 
 var music = new Audio('Game Music.mp3');
+music.loop = true;
 music.volume = 0.3;
 
 var image = new Image();
