@@ -325,7 +325,7 @@ function movement() {
         // 4.72
         paddle2Speed = 7*change;
     }
-    if(ballY > paddle2Y+paddleHeight*0.3 && ballY < paddle2Y+paddleHeight*0.7 && ballSpeedY == 0) {
+    if(ballY > paddle2Y && ballY < paddle2Y+paddleHeight && ballSpeedY == 0) {
         paddle2Speed = 0;
     }
 };
