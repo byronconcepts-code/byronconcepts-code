@@ -27,6 +27,7 @@ window.addEventListener('resize', function(){
 window.onload = function() {   
     // main loop
     if(playSound = true) {
+        console.log('Play music')
         music.play();
     }
     var framesPerSecond = 60;
